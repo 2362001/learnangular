@@ -1,0 +1,17 @@
+.page-container {
+  position: relative; /* make the spin position absolute relative to this */
+  min-height: 100vh; /* full viewport height */
+}
+
+.fullscreen-spin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;           /* center the spinner */
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5); /* semi-transparent overlay */
+  z-index: 9999;           /* on top of everything */
+}

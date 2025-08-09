@@ -1,6 +1,7 @@
-<!-- Khi path login thì sẽ ăn cả 2 câu này  -->
-<div>
-    Learn Angular
+<div class="page-container">
+  <router-outlet></router-outlet>
+
+  <nz-spin *ngIf="isLoading" nzSimple class="fullscreen-spin"></nz-spin>
+  <!-- // gợi ý sửa ở đây em nhé 
+  // tách thành component loading, tìm hiểu @Input @Output của angular và nhận vào biến kích thước , sau đó dùng ngIf để tùy chọn điều kiện -->
 </div>
-<!-- Tuyến đường để chuyển sang -->
-<router-outlet></router-outlet>
