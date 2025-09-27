@@ -1,33 +1,49 @@
-<div class="login">
-  <div class="login-left">
-    <h1>Abuha Messenger</h1>
-    <p>Connect with friends and the world around you on Abuha messenger.</p>
-  </div>
-  <div class="login-right">
-    <form nz-form [formGroup]="formLogin">
-      <input
-        type="email"
-        name="Email"
-        formControlName="email"
-        class="login-input"
-        placeholder="Email"
-      />
-      <input
-        type="password"
-        name="Password"
-        formControlName="password"
-        class="login-input"
-        placeholder="Password"
-      />
-    </form>
-    <div class="login-buttons">
-      <button (click)="onNavigateToForgot()" class="forgot-password">
-        Forgot Password?
-      </button>
-      <!-- lỗi cors , lỗi bảo mật  -->
-      <button (click)="handleLogin()" class="btn btn-create">
-        Login Account
-      </button>
-    </div>
-  </div>
-</div>
+<nz-layout class="login-layout">
+  <nz-layout>
+    <nz-content>
+      <div class="inner-content">
+        <div>
+          <img src="assets/images/img-01.png" alt="" />
+        </div>
+        <div class="login-form">
+          <h1>Member Login 1</h1>
+          <!-- <nz-alert nzType="success" nzMessage="Success Text"></nz-alert> -->
+          <form nz-form [formGroup]="loginForm">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Nhập đủ user!">
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="userName"
+                  placeholder="Username"
+                />
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Nhập đủ user!">
+                <input
+                  type="password"
+                  nz-input
+                  formControlName="passWord"
+                  placeholder="Password"
+                />
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <label nz-checkbox formControlName="remember">
+                Remember me
+              </label>
+            </nz-form-item>
+            <button nz-button class="login-form-button" (click)="submitForm()">
+              LOG IN
+            </button>
+          </form>
+        </div>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+<!-- check nếu như chưa đăng nhập thì vào home cần chuyển về login ( guard ) xem cho
+anh cái interceptor ( thêm token vào header ) để truyền xuống backend -->
