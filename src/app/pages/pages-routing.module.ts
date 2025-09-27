@@ -6,7 +6,13 @@ const routes: Routes = [
   {
     path: '',
     component: PagesComponent,
-    children: [],
+    children: [
+      {
+        path: 'exercise',
+        loadChildren: () =>
+          import('./excersice/excersice.module').then((m) => m.ExcersiceModule),
+      },
+    ],
   },
 ];
 

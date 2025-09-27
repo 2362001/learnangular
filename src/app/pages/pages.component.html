@@ -1,1 +1,69 @@
-hello world
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo"></div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <li
+        *ngFor="let item of menu; let even = even; let odd = odd"
+        nz-submenu
+        nzOpen
+        [nzTitle]="item.title"
+        [nzIcon]="item.icon"
+      >
+        <ul>
+          <li
+            *ngFor="let itemchild of item.children"
+            nz-menu-item
+            nzMatchRouter
+          >
+            <a [routerLink]="itemchild.value"> {{ itemchild.title }}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <div class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <span
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></span>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+          "
+        >
+          <nz-avatar
+            nzIcon="user"
+            style="background-color: #87d068"
+          ></nz-avatar>
+          <div class="app-logout" (click)="onLogout()">Log out</div>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <!-- gắn vào đây để nó ăn theo routing của pages -->
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
